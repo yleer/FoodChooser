@@ -13,6 +13,7 @@
 		8806B8902622D3D3006B4FA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8806B88E2622D3D3006B4FA9 /* Main.storyboard */; };
 		8806B8922622D3D5006B4FA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8806B8912622D3D5006B4FA9 /* Assets.xcassets */; };
 		8806B8952622D3D5006B4FA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8806B8932622D3D5006B4FA9 /* LaunchScreen.storyboard */; };
+		888827632623F1A300F6007C /* FoodRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888827622623F1A300F6007C /* FoodRecipe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8806B8912622D3D5006B4FA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8806B8942622D3D5006B4FA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8806B8962622D3D5006B4FA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		888827622623F1A300F6007C /* FoodRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipe.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,24 @@
 		8806B8872622D3D3006B4FA9 /* FoodChooser */ = {
 			isa = PBXGroup;
 			children = (
-				8806B8882622D3D3006B4FA9 /* AppDelegate.swift */,
-				8806B88A2622D3D3006B4FA9 /* SceneDelegate.swift */,
 				8806B88C2622D3D3006B4FA9 /* ViewController.swift */,
+				888827622623F1A300F6007C /* FoodRecipe.swift */,
 				8806B88E2622D3D3006B4FA9 /* Main.storyboard */,
-				8806B8912622D3D5006B4FA9 /* Assets.xcassets */,
-				8806B8932622D3D5006B4FA9 /* LaunchScreen.storyboard */,
+				8806B89D2622D3E7006B4FA9 /* Supporting Files */,
 				8806B8962622D3D5006B4FA9 /* Info.plist */,
 			);
 			path = FoodChooser;
+			sourceTree = "<group>";
+		};
+		8806B89D2622D3E7006B4FA9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8806B8882622D3D3006B4FA9 /* AppDelegate.swift */,
+				8806B88A2622D3D3006B4FA9 /* SceneDelegate.swift */,
+				8806B8912622D3D5006B4FA9 /* Assets.xcassets */,
+				8806B8932622D3D5006B4FA9 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +151,7 @@
 				8806B88D2622D3D3006B4FA9 /* ViewController.swift in Sources */,
 				8806B8892622D3D3006B4FA9 /* AppDelegate.swift in Sources */,
 				8806B88B2622D3D3006B4FA9 /* SceneDelegate.swift in Sources */,
+				888827632623F1A300F6007C /* FoodRecipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
