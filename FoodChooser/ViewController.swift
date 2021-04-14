@@ -13,7 +13,7 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
     override func viewDidLoad() {
         textfield.delegate = self
         
-        let a = "query=pizza&y=37.4978&x=127.0037&radius=30000".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let a = "query=햄버거&y=37.4978&x=127.0037&radius=20000".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
         let urlString1 = "https://dapi.kakao.com/v2/local/search/keyword.json?" + a!
         
         if let url = URL(string: urlString1)
@@ -39,9 +39,10 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
                     do{
                         let decode = try decoder.decode(DaumMapSearchData.self, from: data!)
 //                        print(decode.documents.first)
-                        for place in decode.documents{
-                            print(place.place_name)
+                        DispatchQueue.main.async {
+                            self.kakaoMap(decodedData: decode)
                         }
+                        
                     }catch{ error
                         print("not good \(error )")
                     }
@@ -51,29 +52,35 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
            }
         
         
-        
-        
-        kakaoMap()
+   
        }
         
     
     
-    private func kakaoMap(){
+    private func kakaoMap(decodedData : DaumMapSearchData){
         let mapView = MTMapView(frame: view.frame)
         mapView.delegate = self
         mapView.baseMapType = .standard
 
         
         // Marker
-        let mark = MTMapPOIItem()
-        mark.itemName = "test"
-        mark.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.5920020842759, longitude: 126.942433403904))
-        mark.markerType = .bluePin
-        mark.showAnimationType = .dropFromHeaven
-        mark.draggable = true
-        mark.tag = 12
         
-        mapView.addPOIItems([mark])
+        
+        
+        
+        
+        for place in decodedData.documents{
+            let mark = MTMapPOIItem()
+            mark.itemName = place.place_name
+            mark.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: Double(place.y)!, longitude:Double(place.x)!))
+            mark.markerType = .bluePin
+            mark.showAnimationType = .dropFromHeaven
+            mark.draggable = true
+            mapView.addPOIItems([mark])
+        }
+        
+        
+        
         
         
         view.addSubview(mapView)
