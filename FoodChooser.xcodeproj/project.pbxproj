@@ -48,6 +48,8 @@
 		8870D95D26269428004FD39C /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8870D94E262690EB004FD39C /* libc++.tbd */; };
 		8870D95F26269436004FD39C /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8870D94F262690F5004FD39C /* libxml2.tbd */; };
 		8870D9612626943B004FD39C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8870D950262690FF004FD39C /* libsqlite3.tbd */; };
+		8870D96426269D7B004FD39C /* JunkFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8870D96326269D7B004FD39C /* JunkFunctions.swift */; };
+		8870D96726269E1F004FD39C /* DaumMapSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8870D96626269E1F004FD39C /* DaumMapSearchData.swift */; };
 		888827632623F1A300F6007C /* FoodRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888827622623F1A300F6007C /* FoodRecipe.swift */; };
 		D2E7666F6834733ADF2FD003 /* Pods_FoodChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EE2AA91E1A314BDEC5F0F6D /* Pods_FoodChooser.framework */; };
 /* End PBXBuildFile section */
@@ -108,6 +110,8 @@
 		8870D950262690FF004FD39C /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8870D955262692F8004FD39C /* FoodChooser-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodChooser-Bridging-Header.h"; sourceTree = "<group>"; };
 		8870D95A26269401004FD39C /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
+		8870D96326269D7B004FD39C /* JunkFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JunkFunctions.swift; sourceTree = "<group>"; };
+		8870D96626269E1F004FD39C /* DaumMapSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaumMapSearchData.swift; sourceTree = "<group>"; };
 		888827622623F1A300F6007C /* FoodRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipe.swift; sourceTree = "<group>"; };
 		B77CB5EC98CAD7AD116A8FBB /* Pods-FoodChooser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodChooser.release.xcconfig"; path = "Target Support Files/Pods-FoodChooser/Pods-FoodChooser.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -171,11 +175,13 @@
 			isa = PBXGroup;
 			children = (
 				8806B88C2622D3D3006B4FA9 /* ViewController.swift */,
+				8870D96326269D7B004FD39C /* JunkFunctions.swift */,
 				888827622623F1A300F6007C /* FoodRecipe.swift */,
 				8806B88E2622D3D3006B4FA9 /* Main.storyboard */,
 				8806B89D2622D3E7006B4FA9 /* Supporting Files */,
 				8806B8962622D3D5006B4FA9 /* Info.plist */,
 				8870D955262692F8004FD39C /* FoodChooser-Bridging-Header.h */,
+				8870D96626269E1F004FD39C /* DaumMapSearchData.swift */,
 			);
 			path = FoodChooser;
 			sourceTree = "<group>";
@@ -400,10 +406,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8870D96426269D7B004FD39C /* JunkFunctions.swift in Sources */,
 				8806B88D2622D3D3006B4FA9 /* ViewController.swift in Sources */,
 				8806B8892622D3D3006B4FA9 /* AppDelegate.swift in Sources */,
 				8806B88B2622D3D3006B4FA9 /* SceneDelegate.swift in Sources */,
 				888827632623F1A300F6007C /* FoodRecipe.swift in Sources */,
+				8870D96726269E1F004FD39C /* DaumMapSearchData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

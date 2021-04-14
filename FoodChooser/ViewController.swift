@@ -35,11 +35,19 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
                    if (error != nil) {
                        print(error!)
                    }else {
-                       print(String(data: data!, encoding: .utf8))
+                    let decoder = JSONDecoder()
+                    do{
+                        let decode = try decoder.decode(DaumMapSearchData.self, from: data!)
+                        print(decode.documents)
+                    }catch{ error
+                        print("not good \(error )")
+                    }
                    }
                })
                dataTask.resume()
            }
+        
+        
    
        }
         
@@ -107,117 +115,10 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
     }
 
 }
-    
-//    private func showMap(){
-//        let naverMapView = NMFNaverMapView(frame: view.frame)
-//        naverMapView.showLocationButton = true
-//        naverMapView.showCompass = true
-//        view.addSubview(naverMapView)
-//
-//        // marker
-//        let marker = NMFMarker()
-//        marker.position = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
-//        marker.mapView = naverMapView.mapView
-//
-//        let marker2 = NMFMarker()
-//        marker2.position = NMGLatLng(lat: 37.5070030, lng: 126.9783740)
-//        marker2.mapView = naverMapView.mapView
-//
-//        // info
-//        let infoWindow = NMFInfoWindow()
-//        let dataSource = NMFInfoWindowDefaultTextSource.data()
-//        dataSource.title = "정보 창 내용"
-//        infoWindow.dataSource = dataSource
-//        infoWindow.open(with: marker)
-//
-//    }
-    
-//    private func naverMap(){
-//        let a = "햄버거".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-//
-//        if let url = URL(string: "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" + a!)
-//        {
-//
-//            let header = [
-//                "X-NCP-APIGW-API-KEY-ID" : "phr26q14w5",
-//                "X-NCP-APIGW-API-KEY" : "kAemBjTNtD7Wqdwq8OS57n1lyPcmekSVP6TvK5ON"
-//            ]
-//
-//            let request = NSMutableURLRequest(
-//                url: url,
-//                cachePolicy: .useProtocolCachePolicy,
-//                timeoutInterval: 10.0
-//            )
-//            request.httpMethod = "GET"
-//            request.allHTTPHeaderFields = header
-//
-//
-//            let session = URLSession.shared
-//            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-//                if (error != nil) {
-//                    print(error!)
-//                }else {
-//                    print(String(data: data!, encoding: .utf8))
-//                }
-//            })
-//            dataTask.resume()
-//        }
-//
-//    }
 
 
-
-
-//{
-//
-//    "status\":\"OK\",
-//    \"meta\":
-//        {
-//            \"totalCount\":1,
-//            \"page\":1,
-//            \"count\":1
-//
-//        },
-//    \"addresses\":
-//        [
-//            {
-//                \"roadAddress\":\"서울특별시 서초구 잠원동\",
-//                \"jibunAddress\":\"서울특별시 서초구 잠원동\",
-//                \"englishAddress\":\"Jamwon-dong, Seocho-gu, Seoul, Republic of Korea\",
-//                \"addressElements\":
-//                [
-//                    {
-//                            \"types\":
-//                                [
-//                                    \"SIDO\"
-//                                ],
-//                            \"longName\":\"서울특별시\",
-//                            \"shortName\":\"서울특별시\",
-//                            \"code\":\"\"
-//
-//                    },
-//                    {
-//                            \"types\":[\"SIGUGUN\"],\"longName\":\"서초구\",\"shortName\":\"서초구\",\"code\":\"\"},
-//    {\"types\":[\"DONGMYUN\"],\"longName\":\"잠원동\",\"shortName\":\"잠원동\",\"code\":\"\"},
-//    {\"types\":[\"RI\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"},
-//    {\"types\":[\"ROAD_NAME\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"},
-//                    {
-//                            \"types\":[\"BUILDING_NUMBER\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"},
-//    {\"types\":[\"BUILDING_NAME\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"},
-//    {\"types\":[\"LAND_NUMBER\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"},
-//    {\"types\":[\"POSTAL_CODE\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"}],\"x\":\"127.0142194\",\"y\":\"37.5149511\",\"distance\":0.0
-//
-//                    }
-//            ],
-//
-//
-//
-//    \"errorMessage\":\"\"
-//
-//
-//
-//
-//
-//}
-
-//https://fomaios.tistory.com/entry/iOS-네이버-API를-이용해서-주소를-위도경도로-변환하기NAVER-CLOUD-PLATFORM-GEOCODING  참고
+//place_name: "PIZZA D",
+//address_name: "서울 서대문구 홍은동 48-181",
+//phone: "02-358-5522",
+//x: "126.942433403904",
+//y: "37.5920020842759"
