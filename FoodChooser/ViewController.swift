@@ -6,12 +6,52 @@
 //
 
 import UIKit
+import NMapsMap
  
-class ViewController: UIViewController , UITextFieldDelegate{
+class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
     
     override func viewDidLoad() {
         textfield.delegate = self
+        
+        let a = "pizza".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let urlString1 = "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + a!
+        
+        if let url = URL(string: urlString1)
+           {
+               let header = [
+                "Authorization" : "KakaoAK 6a64b9ddab928a9caf16271ed0de0b9a",
+               ]
+               let request = NSMutableURLRequest(
+                   url: url,
+                   cachePolicy: .useProtocolCachePolicy,
+                   timeoutInterval: 10.0
+               )
+               request.httpMethod = "GET"
+               request.allHTTPHeaderFields = header
+   
+   
+               let session = URLSession.shared
+               let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+                   if (error != nil) {
+                       print(error!)
+                   }else {
+                       print(String(data: data!, encoding: .utf8))
+                   }
+               })
+               dataTask.resume()
+           }
+   
+       }
+        
+    
+    
+    private func kakaoMap(){
+        let mapView = MTMapView(frame: view.frame)
+        mapView.delegate = self
+        mapView.baseMapType = .satellite
+        view.addSubview(mapView)
     }
+    
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textfield.resignFirstResponder()
@@ -65,41 +105,119 @@ class ViewController: UIViewController , UITextFieldDelegate{
             dataTask.resume()
         }
     }
+
 }
-
-
-// Recipe - Food - Nutrition. api 사용. 먼저 음식 검색하면 그 음식에 대한 영양 정보 보이게 하자.
-
-//"{\"results\":
-//[
-//    {\"id\":492564,\"title\":\"Falafel Burgers with Feta Cucumber Sauce\",\"readyInMinutes\":50,\"servings\":6,\"sourceUrl\":\"https://www.cinnamonspiceandeverythingnice.com/falafel-burgers-with-feta-tzatziki-sauce/\",\"openLicense\":0,\"image\":\"falafel-burgers-with-feta-tzatziki-sauce-492564.jpg\"
+    
+//    private func showMap(){
+//        let naverMapView = NMFNaverMapView(frame: view.frame)
+//        naverMapView.showLocationButton = true
+//        naverMapView.showCompass = true
+//        view.addSubview(naverMapView)
 //
-//    },{\"id\":246916,\"title\":\"Bison Burger\",\"readyInMinutes\":45,\"servings\":6,\"sourceUrl\":\"https://www.simplyrecipes.com/recipes/buffalo_burger/\",\"openLicense\":0,\"image\":\"Buffalo-Burger-246916.jpg\"
+//        // marker
+//        let marker = NMFMarker()
+//        marker.position = NMGLatLng(lat: 37.5670135, lng: 126.9783740)
+//        marker.mapView = naverMapView.mapView
 //
-//    },{\"id\":245166,\"title\":\"Hawaiian Pork Burger\",\"readyInMinutes\":40,\"servings\":4,\"sourceUrl\":\"https://www.simplyrecipes.com/recipes/hawaiian_pork_burger/\",\"openLicense\":0,\"image\":\"Hawaiian-Pork-Burger-245166.jpg\"
+//        let marker2 = NMFMarker()
+//        marker2.position = NMGLatLng(lat: 37.5070030, lng: 126.9783740)
+//        marker2.mapView = naverMapView.mapView
 //
-//    },{\"id\":246009,\"title\":\"Blue Cheese Burgers\",\"readyInMinutes\":55,\"servings\":4,\"sourceUrl\":\"https://www.simplyrecipes.com/recipes/blue_cheese_burgers/\",\"openLicense\":0,\"image\":\"Blue-Cheese-Burgers-246009.jpg\"
-//
-//    },{\"id\":219957,\"title\":\"Carrot & sesame burgers\",\"readyInMinutes\":50,\"servings\":6,\"sourceUrl\":\"https://www.bbcgoodfood.com/recipes/11011/carrot-and-sesame-burgers\",\"openLicense\":0,\"image\":\"Carrot---sesame-burgers-219957.jpg\"
-//
-//    },{\"id\":607109,\"title\":\"Turkey Zucchini Burger with Garlic Mayo\",\"readyInMinutes\":45,\"servings\":6,\"sourceUrl\":\"https://www.simplyrecipes.com/recipes/turkey_zucchini_burger_with_garlic_mayo/\",\"openLicense\":0,\"image\":\"Turkey-Zucchini-Burger-with-Garlic-Mayo-607109.jpg\"
-//
-//    },{\"id\":864633,\"title\":\"Banh Mi Burgers with Spicy Sriracha Mayo\",\"readyInMinutes\":35,\"servings\":4,\"sourceUrl\":\"http://littlespicejar.com/banh-mi-burgers-with-spicy-sriracha-mayo/\",\"openLicense\":0,\"image\":\"banh-mi-burgers-with-spicy-sriracha-mayo-864633.jpg\"
-//
-//    },{\"id\":219871,\"title\":\"Halloumi aubergine burgers with harissa relish\",\"readyInMinutes\":20,\"servings\":4,\"sourceUrl\":\"https://www.bbcgoodfood.com/recipes/2196638/halloumi-aubergine-burgers-with-harissa-relish\",\"openLicense\":0,\"image\":\"Halloumi-aubergine-burgers-with-harissa-relish-219871.jpg\"
-//
-//    },{\"id\":246177,\"title\":\"Grilled Beef and Mushroom Burger\",\"readyInMinutes\":30,\"servings\":3,\"sourceUrl\":\"https://www.simplyrecipes.com/recipes/grilled_beef_and_mushroom_burger/\",\"openLicense\":0,\"image\":\"Grilled-Beef-and-Mushroom-Burger-246177.jpg\"
-//
-//    },{\"id\":245343,\"title\":\"Herbed Turkey Burger\",\"readyInMinutes\":30,\"servings\":8,\"sourceUrl\":\"https://www.simplyrecipes.com/recipes/herbed_turkey_burger/\",\"openLicense\":0,\"image\":\"Herbed-Turkey-Burger-245343.jpg\"
+//        // info
+//        let infoWindow = NMFInfoWindow()
+//        let dataSource = NMFInfoWindowDefaultTextSource.data()
+//        dataSource.title = "정보 창 내용"
+//        infoWindow.dataSource = dataSource
+//        infoWindow.open(with: marker)
 //
 //    }
-//],
+    
+//    private func naverMap(){
+//        let a = "햄버거".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
 //
-//\"baseUri\":\"https://spoonacular.com/recipeImages/\",
-//\"offset\":0,
-//\"number\":10,
-//\"totalResults\":179,
-//\"processingTimeMs\":218,
-//\"expires\":1618394822678,
-//\"isStale\":false
+//        if let url = URL(string: "https://naveropenapi.apigw.ntruss.com/map-geocode/v2/geocode?query=" + a!)
+//        {
+//
+//            let header = [
+//                "X-NCP-APIGW-API-KEY-ID" : "phr26q14w5",
+//                "X-NCP-APIGW-API-KEY" : "kAemBjTNtD7Wqdwq8OS57n1lyPcmekSVP6TvK5ON"
+//            ]
+//
+//            let request = NSMutableURLRequest(
+//                url: url,
+//                cachePolicy: .useProtocolCachePolicy,
+//                timeoutInterval: 10.0
+//            )
+//            request.httpMethod = "GET"
+//            request.allHTTPHeaderFields = header
+//
+//
+//            let session = URLSession.shared
+//            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+//                if (error != nil) {
+//                    print(error!)
+//                }else {
+//                    print(String(data: data!, encoding: .utf8))
+//                }
+//            })
+//            dataTask.resume()
+//        }
+//
+//    }
+
+
+
+
+//{
+//
+//    "status\":\"OK\",
+//    \"meta\":
+//        {
+//            \"totalCount\":1,
+//            \"page\":1,
+//            \"count\":1
+//
+//        },
+//    \"addresses\":
+//        [
+//            {
+//                \"roadAddress\":\"서울특별시 서초구 잠원동\",
+//                \"jibunAddress\":\"서울특별시 서초구 잠원동\",
+//                \"englishAddress\":\"Jamwon-dong, Seocho-gu, Seoul, Republic of Korea\",
+//                \"addressElements\":
+//                [
+//                    {
+//                            \"types\":
+//                                [
+//                                    \"SIDO\"
+//                                ],
+//                            \"longName\":\"서울특별시\",
+//                            \"shortName\":\"서울특별시\",
+//                            \"code\":\"\"
+//
+//                    },
+//                    {
+//                            \"types\":[\"SIGUGUN\"],\"longName\":\"서초구\",\"shortName\":\"서초구\",\"code\":\"\"},
+//    {\"types\":[\"DONGMYUN\"],\"longName\":\"잠원동\",\"shortName\":\"잠원동\",\"code\":\"\"},
+//    {\"types\":[\"RI\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"},
+//    {\"types\":[\"ROAD_NAME\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"},
+//                    {
+//                            \"types\":[\"BUILDING_NUMBER\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"},
+//    {\"types\":[\"BUILDING_NAME\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"},
+//    {\"types\":[\"LAND_NUMBER\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"},
+//    {\"types\":[\"POSTAL_CODE\"],\"longName\":\"\",\"shortName\":\"\",\"code\":\"\"}],\"x\":\"127.0142194\",\"y\":\"37.5149511\",\"distance\":0.0
+//
+//                    }
+//            ],
+//
+//
+//
+//    \"errorMessage\":\"\"
+//
+//
+//
+//
+//
 //}
+
+//https://fomaios.tistory.com/entry/iOS-네이버-API를-이용해서-주소를-위도경도로-변환하기NAVER-CLOUD-PLATFORM-GEOCODING  참고

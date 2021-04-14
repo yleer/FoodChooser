@@ -2,6 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>KAKAO_APP_KEY</key>
+	<string>31678e6d58d3053af2f2fe63bfecb4c7</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>사용자의 위치를 받습니다.</string>
+	<key>NMFClientId</key>
+	<string>phr26q14w5</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
