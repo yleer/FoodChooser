@@ -13,8 +13,8 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
     override func viewDidLoad() {
         textfield.delegate = self
         
-        let a = "pizza".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-        let urlString1 = "https://dapi.kakao.com/v2/local/search/keyword.json?query=" + a!
+        let a = "query=pizza&y=37.4978&x=127.0037&radius=30000".addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
+        let urlString1 = "https://dapi.kakao.com/v2/local/search/keyword.json?" + a!
         
         if let url = URL(string: urlString1)
            {
@@ -28,8 +28,8 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
                )
                request.httpMethod = "GET"
                request.allHTTPHeaderFields = header
-   
-   
+
+
                let session = URLSession.shared
                let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
                    if (error != nil) {
@@ -38,7 +38,10 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
                     let decoder = JSONDecoder()
                     do{
                         let decode = try decoder.decode(DaumMapSearchData.self, from: data!)
-                        print(decode.documents)
+//                        print(decode.documents.first)
+                        for place in decode.documents{
+                            print(place.place_name)
+                        }
                     }catch{ error
                         print("not good \(error )")
                     }
@@ -48,7 +51,9 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
            }
         
         
-   
+        
+        
+        kakaoMap()
        }
         
     
@@ -56,8 +61,29 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
     private func kakaoMap(){
         let mapView = MTMapView(frame: view.frame)
         mapView.delegate = self
-        mapView.baseMapType = .satellite
+        mapView.baseMapType = .standard
+
+        
+        // Marker
+        let mark = MTMapPOIItem()
+        mark.itemName = "test"
+        mark.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.5920020842759, longitude: 126.942433403904))
+        mark.markerType = .bluePin
+        mark.showAnimationType = .dropFromHeaven
+        mark.draggable = true
+        mark.tag = 12
+        
+        mapView.addPOIItems([mark])
+        
+        
         view.addSubview(mapView)
+        
+        // 위치 현제 coord 찾아서 대입만 하자.
+        mapView.setMapCenter(MTMapPoint(geoCoord: MTMapPointGeo(latitude: 37.4978, longitude: 127.0037)), zoomLevel: MTMapZoomLevel(2), animated: true)
+        
+        
+        
+        
     }
     
     
@@ -122,3 +148,6 @@ class ViewController: UIViewController , UITextFieldDelegate, MTMapViewDelegate{
 //phone: "02-358-5522",
 //x: "126.942433403904",
 //y: "37.5920020842759"
+
+
+//not good keyNotFound(CodingKeys(stringValue: "documents", intValue: nil), Swift.DecodingError.Context(codingPath: [], debugDescription: "No value associated with key CodingKeys(stringValue: \"documents\", intValue: nil) (\"documents\").", underlyingError: nil))
