@@ -76,28 +76,41 @@
                     <connections>
                         <outlet property="textfield" destination="k3L-v0-h1z" id="WCa-fN-cN1"/>
                         <segue destination="bNe-Xn-YJk" kind="show" identifier="segue to map" id="E4Q-Lp-nhr"/>
-                        <segue destination="RQP-pC-aWj" kind="show" identifier="segue to recipe" id="BYh-5F-47w"/>
+                        <segue destination="Q0W-rj-bY5" kind="show" identifier="segue to recipe" id="KJN-nP-gEn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1039.1304347826087" y="43.526785714285715"/>
         </scene>
-        <!--Recipe View Controller-->
-        <scene sceneID="JcY-dv-fNb">
+        <!--Recipe Table View Controller-->
+        <scene sceneID="3th-0Z-3SK">
             <objects>
-                <viewController id="RQP-pC-aWj" customClass="RecipeViewController" customModule="FoodChooser" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="i14-RA-bVI">
+                <tableViewController id="Q0W-rj-bY5" customClass="RecipeTableViewController" customModule="FoodChooser" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="apK-uM-lkc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="SSr-Iz-vfN"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="g8h-CS-RjE"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rXj-LK-ffW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="recipe cell" id="XXP-l4-wwW">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XXP-l4-wwW" id="DMV-dY-LIK">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Q0W-rj-bY5" id="SXG-pO-AtF"/>
+                            <outlet property="delegate" destination="Q0W-rj-bY5" id="p26-bv-jZz"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="xJO-lQ-dHQ"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a3K-0v-pN0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2084.057971014493" y="383.70535714285711"/>
+            <point key="canvasLocation" x="2084" y="401"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="PHE-Ep-aI3">

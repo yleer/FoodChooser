@@ -31,10 +31,7 @@ class ViewController: UIViewController , UITextFieldDelegate, CLLocationManagerD
     }
     
     @IBAction func recipeButton(_ sender: UIButton) {
-        if let coordinate = locationManager.location?.coordinate{
-            print(coordinate.latitude)
-            print(coordinate.longitude)
-        }
+        performSegue(withIdentifier: "segue to recipe", sender: self)
     }
     
     
@@ -46,9 +43,10 @@ class ViewController: UIViewController , UITextFieldDelegate, CLLocationManagerD
                 destinationVC.latitudeDobule = coordinate.latitude
                 destinationVC.longitudeDouble = coordinate.longitude
             }
-            
+        }else{
+            let destinationVC = segue.destination as! RecipeTableViewController
+            destinationVC.searchString = textfield.text
         }
-        
     }
 
     
