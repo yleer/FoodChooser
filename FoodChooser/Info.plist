@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>lavy</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>hello</string>
 	<key>KAKAO_APP_KEY</key>
 	<string>31678e6d58d3053af2f2fe63bfecb4c7</string>
 	<key>NSLocationAlwaysUsageDescription</key>
