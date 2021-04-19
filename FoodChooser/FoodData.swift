@@ -18,7 +18,7 @@ struct FoodData {
         foods.append(Food(name: "피자", image: UIImage(named: "피자.jpg")))
         foods.append(Food(name: "카레", image: UIImage(named: "카레.jpg")))
         foods.append(Food(name: "부대찌개", image: UIImage(named: "부대찌개.jpg")))
-        foods.append(Food(name: "쓰시", image: UIImage(named: "쓰시.jpg")))
+        foods.append(Food(name: "쓰시", image: UIImage(named: "스시.jpg")))
         foods.append(Food(name: "사시미", image: UIImage(named: "사시미.jpg")))
         foods.append(Food(name: "치킨", image: UIImage(named: "치킨.jpg")))
     }
