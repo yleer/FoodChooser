@@ -8,7 +8,7 @@
 import UIKit
 import NMapsMap
  
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate{
     
     @IBOutlet var collectionView: UICollectionView!
     let locationManager = CLLocationManager()
@@ -23,6 +23,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         cell.foodImage.image = foodData.foods[indexPath.row].image
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: collectionView.frame.height)
+       }
 
     override func viewDidLoad() {
         collectionView.delegate = self
