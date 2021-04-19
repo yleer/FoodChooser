@@ -14,17 +14,13 @@ class RecipeTableViewController: UITableViewController {
         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     ]
     
-    var endPointString = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query="
+    let endPointString = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query="
     var searchString : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let urlString = endPointString + searchString!
         netwrok(urlStr: urlString)
-        
-        
-        
-        
     }
     
     func netwrok(urlStr : String){
@@ -37,7 +33,6 @@ class RecipeTableViewController: UITableViewController {
             request.httpMethod = "GET"
             request.allHTTPHeaderFields = headers
             
-            
             let session = URLSession.shared
             let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
                 if (error != nil) {
@@ -47,8 +42,6 @@ class RecipeTableViewController: UITableViewController {
                     do{
                         let decode = try decoder.decode(FoodRecipe.self, from: data!)
                         self.decodedData = decode
-                        print(decode.results.count)
-                
                         
                     }catch{
                         print("not good \(error )")
