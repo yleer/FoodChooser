@@ -41,7 +41,7 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EJP-jh-q3p">
-                                <rect key="frame" x="0.0" y="88" width="414" height="716"/>
+                                <rect key="frame" x="8" y="146.5" width="398" height="657.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Kz-MN-ITH">
                                     <size key="itemSize" width="128" height="128"/>
@@ -74,17 +74,26 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 뭐 먹을까?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vse-c7-jrf">
+                                <rect key="frame" x="8" y="96" width="398" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nm9-S6-OEu" secondAttribute="trailing" id="0r6-5D-LRq"/>
-                            <constraint firstItem="EJP-jh-q3p" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Ra6-EI-9zu"/>
+                            <constraint firstItem="nm9-S6-OEu" firstAttribute="top" secondItem="EJP-jh-q3p" secondAttribute="bottom" constant="8" id="0vy-Qc-E0I"/>
+                            <constraint firstItem="vse-c7-jrf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="Ghz-FA-9Ty"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EJP-jh-q3p" secondAttribute="trailing" constant="8" id="Mpr-gG-M47"/>
+                            <constraint firstItem="vse-c7-jrf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="RCs-SW-uop"/>
+                            <constraint firstItem="EJP-jh-q3p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="U9N-Bt-yzD"/>
+                            <constraint firstItem="EJP-jh-q3p" firstAttribute="top" secondItem="vse-c7-jrf" secondAttribute="bottom" constant="30" id="UtI-ni-aK9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nm9-S6-OEu" secondAttribute="bottom" id="Uwe-hD-8X2"/>
-                            <constraint firstItem="nm9-S6-OEu" firstAttribute="top" secondItem="EJP-jh-q3p" secondAttribute="bottom" constant="8" symbolic="YES" id="XVe-H2-Qnt"/>
-                            <constraint firstItem="EJP-jh-q3p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZO5-3U-9vf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EJP-jh-q3p" secondAttribute="trailing" id="eKg-2e-dSH"/>
                             <constraint firstItem="nm9-S6-OEu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oGw-Mx-4XB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vse-c7-jrf" secondAttribute="trailing" constant="8" id="s5d-UJ-mpp"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="V80-6v-WfC"/>
