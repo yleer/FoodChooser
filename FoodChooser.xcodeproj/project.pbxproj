@@ -51,6 +51,8 @@
 		8870D9612626943B004FD39C /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8870D950262690FF004FD39C /* libsqlite3.tbd */; };
 		8870D96426269D7B004FD39C /* JunkFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8870D96326269D7B004FD39C /* JunkFunctions.swift */; };
 		8870D96726269E1F004FD39C /* DaumMapSearchData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8870D96626269E1F004FD39C /* DaumMapSearchData.swift */; };
+		887178A8262D0C8D00E5CEB4 /* FoodData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887178A7262D0C8D00E5CEB4 /* FoodData.swift */; };
+		887178AB262D0DE200E5CEB4 /* FoodImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 887178AA262D0DE200E5CEB4 /* FoodImageCollectionViewCell.swift */; };
 		888827632623F1A300F6007C /* FoodRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888827622623F1A300F6007C /* FoodRecipe.swift */; };
 		88E242F226294CCB00557AD4 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E242F126294CCB00557AD4 /* MapViewController.swift */; };
 		D2E7666F6834733ADF2FD003 /* Pods_FoodChooser.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3EE2AA91E1A314BDEC5F0F6D /* Pods_FoodChooser.framework */; };
@@ -115,6 +117,8 @@
 		8870D95A26269401004FD39C /* Metal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Metal.framework; path = System/Library/Frameworks/Metal.framework; sourceTree = SDKROOT; };
 		8870D96326269D7B004FD39C /* JunkFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JunkFunctions.swift; sourceTree = "<group>"; };
 		8870D96626269E1F004FD39C /* DaumMapSearchData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaumMapSearchData.swift; sourceTree = "<group>"; };
+		887178A7262D0C8D00E5CEB4 /* FoodData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodData.swift; sourceTree = "<group>"; };
+		887178AA262D0DE200E5CEB4 /* FoodImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		888827622623F1A300F6007C /* FoodRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodRecipe.swift; sourceTree = "<group>"; };
 		88E242F126294CCB00557AD4 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B77CB5EC98CAD7AD116A8FBB /* Pods-FoodChooser.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodChooser.release.xcconfig"; path = "Target Support Files/Pods-FoodChooser/Pods-FoodChooser.release.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				88E242F726295DD200557AD4 /* Model */,
 				8806B89D2622D3E7006B4FA9 /* Supporting Files */,
 				8806B8962622D3D5006B4FA9 /* Info.plist */,
+				887178A7262D0C8D00E5CEB4 /* FoodData.swift */,
+				887178AA262D0DE200E5CEB4 /* FoodImageCollectionViewCell.swift */,
 			);
 			path = FoodChooser;
 			sourceTree = "<group>";
@@ -423,10 +429,12 @@
 				8870D96426269D7B004FD39C /* JunkFunctions.swift in Sources */,
 				881FA40E262960890018CEE7 /* RecipeTableViewController.swift in Sources */,
 				8806B88D2622D3D3006B4FA9 /* ViewController.swift in Sources */,
+				887178A8262D0C8D00E5CEB4 /* FoodData.swift in Sources */,
 				8806B8892622D3D3006B4FA9 /* AppDelegate.swift in Sources */,
 				8806B88B2622D3D3006B4FA9 /* SceneDelegate.swift in Sources */,
 				888827632623F1A300F6007C /* FoodRecipe.swift in Sources */,
 				8870D96726269E1F004FD39C /* DaumMapSearchData.swift in Sources */,
+				887178AB262D0DE200E5CEB4 /* FoodImageCollectionViewCell.swift in Sources */,
 				88E242F226294CCB00557AD4 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

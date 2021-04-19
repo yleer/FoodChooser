@@ -8,12 +8,25 @@
 import UIKit
 import NMapsMap
  
-class ViewController: UIViewController , UITextFieldDelegate, CLLocationManagerDelegate{
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
     
+    @IBOutlet var collectionView: UICollectionView!
     let locationManager = CLLocationManager()
+    let foodData = FoodData()
     
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        foodData.foods.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "food image cell", for: indexPath) as! FoodImageCollectionViewCell
+        cell.foodImage.image = foodData.foods[indexPath.row].image
+        return cell
+    }
+
     override func viewDidLoad() {
-        textfield.delegate = self
+        collectionView.delegate = self
+        collectionView.dataSource = self
         
         locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
@@ -38,27 +51,15 @@ class ViewController: UIViewController , UITextFieldDelegate, CLLocationManagerD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "segue to map"{
             let destinationVC = segue.destination as! MapViewController
-            destinationVC.searchString = textfield.text
+//            destinationVC.searchString = textfield.text
             if let coordinate = locationManager.location?.coordinate{
                 destinationVC.latitudeDobule = coordinate.latitude
                 destinationVC.longitudeDouble = coordinate.longitude
             }
         }else{
             let destinationVC = segue.destination as! RecipeTableViewController
-            destinationVC.searchString = textfield.text
+//            destinationVC.searchString = textfield.text
         }
     }
 
-    
-    // MARK: text filed.
-    @IBOutlet weak var textfield: UITextField!
-    
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textfield.resignFirstResponder()
-        return true
     }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        print(textfield.text!)
-    }
-}
