@@ -8,17 +8,65 @@
 import UIKit
 import NMapsMap
  
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, CLLocationManagerDelegate{
+class ViewController: UIViewController, CLLocationManagerDelegate{
     
-    @IBOutlet var collectionView: UICollectionView!
     
+    @IBOutlet var pp: UIView!
     let locationManager = CLLocationManager()
     let foodData = FoodData()
 
-    override func viewDidLoad() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
+    
+    @IBOutlet var imageView: UIImageView!
+    @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
+        let card = sender.view!
+        let point = sender.translation(in: card)
+        card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
+
+        if sender.state == UIPanGestureRecognizer.State.ended{
+            if card.center.x < 75{
+                
+                UIView.animate(
+                    withDuration: 0.3,
+                    animations: {
+                        card.center = CGPoint(x: card.center.x - 200, y: card.center.y)
+                        card.alpha = 0
+                    },
+                    completion: { finished in
+                        card.frame = self.ppFrame!
+                        UIView.animate(withDuration: 0.3, animations: {
+                            card.alpha = 1
+                        })
+                    }
+                )
+                return
+            }else if card.center.x > (view.frame.width - 75){
+                UIView.animate(
+                    withDuration: 0.3,
+                    animations: {
+                    card.center = CGPoint(x: card.center.x + 200, y: card.center.y)
+                    card.alpha = 0
+                    },
+                    completion: { finished in
+                        card.frame = self.ppFrame!
+                        UIView.animate(withDuration: 0.3, animations: {
+                            card.alpha = 1
+                        })
+                    }
+                )
+                return
+            }
+            
+            UIView.animate(withDuration: 0.2, animations: {
+                card.frame = self.ppFrame!
+            })
+        }
         
+    }
+    
+    var ppFrame : CGRect?
+    override func viewDidLoad() {
+        imageView.image = foodData.foods[0].image
+        ppFrame = pp.frame
         locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -26,16 +74,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             locationManager.startUpdatingLocation()
         }
     }
-    var currentIndexPath : Int?
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        foodData.foods.count
-    }
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "food image cell", for: indexPath) as! FoodImageCollectionViewCell
-        cell.foodImage.image = foodData.foods[indexPath.row].image
-        return cell
-    }
     
+    
+    var currentIndexPath : Int?
+        
     // MARK: Segue.
     @IBAction func mapButton(_ sender: UIButton) {
         performSegue(withIdentifier: "segue to map", sender: self)
@@ -46,14 +88,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        for cell in collectionView.visibleCells{
-            if let indexPath = collectionView.indexPath(for: cell){
-                currentIndexPath = indexPath.row
-                break
-            }
-        }
-        
-        if segue.identifier == "segue to map"{
+            if segue.identifier == "segue to map"{
             let destinationVC = segue.destination as! MapViewController
             destinationVC.searchString = foodData.foods[currentIndexPath!].name
             if let coordinate = locationManager.location?.coordinate{
@@ -70,24 +105,4 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
 
-}
-
-
-// MARK: collection flow layout, delegate part.
-extension ViewController{
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: collectionView.bounds.height)
-       }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 0
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(foodData.foods[indexPath.row].name)
-    }
 }

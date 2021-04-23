@@ -6,7 +6,6 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
-        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -40,70 +39,61 @@
                                     <constraint firstAttribute="height" constant="50" id="DfE-C2-dVI"/>
                                 </constraints>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="EJP-jh-q3p">
-                                <rect key="frame" x="8" y="146.5" width="398" height="657.5"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="2Kz-MN-ITH">
-                                    <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="food image cell" id="CvU-M4-GUO" customClass="FoodImageCollectionViewCell" customModule="FoodChooser" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="u8A-C6-f2x">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EhC-G8-x5o">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="EhC-G8-x5o" firstAttribute="leading" secondItem="u8A-C6-f2x" secondAttribute="leading" id="Fh2-ZI-LFP"/>
-                                                <constraint firstItem="EhC-G8-x5o" firstAttribute="top" secondItem="u8A-C6-f2x" secondAttribute="top" id="byH-0m-LlO"/>
-                                                <constraint firstAttribute="trailing" secondItem="EhC-G8-x5o" secondAttribute="trailing" id="hxs-Yh-4e7"/>
-                                                <constraint firstAttribute="bottom" secondItem="EhC-G8-x5o" secondAttribute="bottom" id="rrf-MK-sYj"/>
-                                            </constraints>
-                                        </collectionViewCellContentView>
-                                        <connections>
-                                            <outlet property="foodImage" destination="EhC-G8-x5o" id="Ikc-Fp-OQd"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                            </collectionView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="오늘 뭐 먹을까?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vse-c7-jrf">
                                 <rect key="frame" x="8" y="96" width="398" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eZe-SP-SWm">
+                                <rect key="frame" x="8" y="124.5" width="398" height="679.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="v6s-JU-Lgf">
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="679.5"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="v6s-JU-Lgf" firstAttribute="leading" secondItem="eZe-SP-SWm" secondAttribute="leading" id="85T-WC-cXi"/>
+                                    <constraint firstItem="v6s-JU-Lgf" firstAttribute="top" secondItem="eZe-SP-SWm" secondAttribute="top" id="ayP-Ut-WZi"/>
+                                    <constraint firstAttribute="trailing" secondItem="v6s-JU-Lgf" secondAttribute="trailing" id="xLn-2N-0ne"/>
+                                    <constraint firstAttribute="bottom" secondItem="v6s-JU-Lgf" secondAttribute="bottom" id="zWT-d4-xCW"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="OgP-RL-0h2" appends="YES" id="4n5-jj-6JU"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nm9-S6-OEu" secondAttribute="trailing" id="0r6-5D-LRq"/>
-                            <constraint firstItem="nm9-S6-OEu" firstAttribute="top" secondItem="EJP-jh-q3p" secondAttribute="bottom" constant="8" id="0vy-Qc-E0I"/>
+                            <constraint firstItem="eZe-SP-SWm" firstAttribute="top" secondItem="vse-c7-jrf" secondAttribute="bottom" constant="8" symbolic="YES" id="3il-Rp-ZzD"/>
                             <constraint firstItem="vse-c7-jrf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="8" id="Ghz-FA-9Ty"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EJP-jh-q3p" secondAttribute="trailing" constant="8" id="Mpr-gG-M47"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="eZe-SP-SWm" secondAttribute="trailing" constant="8" id="MaS-Jl-2DU"/>
+                            <constraint firstItem="nm9-S6-OEu" firstAttribute="top" secondItem="eZe-SP-SWm" secondAttribute="bottom" constant="8" symbolic="YES" id="ORA-dC-ODm"/>
                             <constraint firstItem="vse-c7-jrf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="RCs-SW-uop"/>
-                            <constraint firstItem="EJP-jh-q3p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="U9N-Bt-yzD"/>
-                            <constraint firstItem="EJP-jh-q3p" firstAttribute="top" secondItem="vse-c7-jrf" secondAttribute="bottom" constant="30" id="UtI-ni-aK9"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="nm9-S6-OEu" secondAttribute="bottom" id="Uwe-hD-8X2"/>
                             <constraint firstItem="nm9-S6-OEu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="oGw-Mx-4XB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vse-c7-jrf" secondAttribute="trailing" constant="8" id="s5d-UJ-mpp"/>
+                            <constraint firstItem="eZe-SP-SWm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="8" id="si2-oM-03w"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="V80-6v-WfC"/>
                     <connections>
-                        <outlet property="collectionView" destination="EJP-jh-q3p" id="tcN-M3-YsW"/>
+                        <outlet property="imageView" destination="v6s-JU-Lgf" id="5gj-gt-RUd"/>
+                        <outlet property="pp" destination="eZe-SP-SWm" id="RJd-8K-gci"/>
                         <segue destination="bNe-Xn-YJk" kind="show" identifier="segue to map" id="E4Q-Lp-nhr"/>
                         <segue destination="Q0W-rj-bY5" kind="show" identifier="segue to recipe" id="KJN-nP-gEn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="OgP-RL-0h2">
+                    <connections>
+                        <action selector="panGesture:" destination="BYZ-38-t0r" id="9Hk-t7-9Qc"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1039.1304347826087" y="43.526785714285715"/>
         </scene>
@@ -177,6 +167,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
