@@ -24,7 +24,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
 
         if sender.state == UIPanGestureRecognizer.State.ended{
             if card.center.x < 75{
-                
+                currentIndexPath += 1
                 UIView.animate(
                     withDuration: 0.3,
                     animations: {
@@ -32,6 +32,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                         card.alpha = 0
                     },
                     completion: { finished in
+                        self.imageView.image = self.foodData.foods[self.currentIndexPath].image
                         card.frame = self.ppFrame!
                         UIView.animate(withDuration: 0.3, animations: {
                             card.alpha = 1
@@ -40,6 +41,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                 )
                 return
             }else if card.center.x > (view.frame.width - 75){
+                currentIndexPath -= 1
                 UIView.animate(
                     withDuration: 0.3,
                     animations: {
@@ -48,6 +50,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                     },
                     completion: { finished in
                         card.frame = self.ppFrame!
+                        self.imageView.image = self.foodData.foods[self.currentIndexPath].image
                         UIView.animate(withDuration: 0.3, animations: {
                             card.alpha = 1
                         })
@@ -65,7 +68,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     
     var ppFrame : CGRect?
     override func viewDidLoad() {
-        imageView.image = foodData.foods[0].image
+        imageView.image = foodData.foods[currentIndexPath].image
         ppFrame = pp.frame
         locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
@@ -76,7 +79,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     
-    var currentIndexPath : Int?
+    var currentIndexPath = 0
         
     // MARK: Segue.
     @IBAction func mapButton(_ sender: UIButton) {
@@ -90,7 +93,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
             if segue.identifier == "segue to map"{
             let destinationVC = segue.destination as! MapViewController
-            destinationVC.searchString = foodData.foods[currentIndexPath!].name
+            destinationVC.searchString = foodData.foods[currentIndexPath].name
             if let coordinate = locationManager.location?.coordinate{
                 destinationVC.latitudeDobule = 37.5575
 //                    coordinate.latitude
@@ -101,7 +104,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             }
         }else{
             let destinationVC = segue.destination as! RecipeTableViewController
-            destinationVC.searchString = foodData.foods[currentIndexPath!].name
+            destinationVC.searchString = foodData.foods[currentIndexPath].name
         }
     }
 
