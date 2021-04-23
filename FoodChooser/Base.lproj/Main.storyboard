@@ -121,10 +121,29 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="xJO-lQ-dHQ"/>
+                    <connections>
+                        <segue destination="yPr-s5-StA" kind="show" identifier="go to broswer" id="klv-G3-bpQ"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a3K-0v-pN0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2084" y="401"/>
+        </scene>
+        <!--Recipe Browser View Controller-->
+        <scene sceneID="QUL-DE-4Ve">
+            <objects>
+                <viewController id="yPr-s5-StA" customClass="RecipeBrowserViewController" customModule="FoodChooser" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kvH-34-40o">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="MGy-E6-0Hw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="QA0-RN-LuU"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ebZ-g5-uPT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3061" y="400"/>
         </scene>
         <!--Map View Controller-->
         <scene sceneID="PHE-Ep-aI3">

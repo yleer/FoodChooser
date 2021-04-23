@@ -8,7 +8,7 @@
 import UIKit
 
 class RecipeTableViewController: UITableViewController {
-
+    
     let headers = [
         "x-rapidapi-key": "4be4004724msh04a4366f0fdf175p12039ajsn50ececf3194a",
         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
@@ -23,8 +23,23 @@ class RecipeTableViewController: UITableViewController {
         netwrok(urlStr: urlString)
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(decodedData?.results[indexPath.row].sourceUrl)
+        performSegue(withIdentifier: "go to broswer", sender: self)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let indexPath = tableView.indexPathForSelectedRow{
+            let selectedRow = indexPath.row
+            
+            if segue.identifier == "go to broswer"{
+                let destinationVC = segue.destination as! RecipeBrowserViewController
+                destinationVC.recipeUrl = decodedData?.results[selectedRow].sourceUrl
+            }
+        }
+        
+        
+    }
+    
+    
     
     func netwrok(urlStr : String){
         if let url = URL(string: urlStr){
@@ -62,7 +77,7 @@ class RecipeTableViewController: UITableViewController {
             }
         }
     }
-
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
@@ -75,9 +90,9 @@ class RecipeTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipe cell", for: indexPath)
-
+        
         cell.textLabel?.text = decodedData?.results[indexPath.row].title
-
-       return cell
+        
+        return cell
     }
 }
