@@ -22,6 +22,9 @@ class RecipeTableViewController: UITableViewController {
         let urlString = endPointString + searchString!
         netwrok(urlStr: urlString)
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(decodedData?.results[indexPath.row].sourceUrl)
+    }
     
     func netwrok(urlStr : String){
         if let url = URL(string: urlStr){

@@ -189,9 +189,9 @@
 				8870D955262692F8004FD39C /* FoodChooser-Bridging-Header.h */,
 				88E242F726295DD200557AD4 /* Model */,
 				8806B89D2622D3E7006B4FA9 /* Supporting Files */,
-				8806B8962622D3D5006B4FA9 /* Info.plist */,
 				887178A7262D0C8D00E5CEB4 /* FoodData.swift */,
 				887178AA262D0DE200E5CEB4 /* FoodImageCollectionViewCell.swift */,
+				8806B8962622D3D5006B4FA9 /* Info.plist */,
 			);
 			path = FoodChooser;
 			sourceTree = "<group>";
