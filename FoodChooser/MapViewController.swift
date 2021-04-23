@@ -21,6 +21,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        print("not showing")
         // 국립중앙도서관
 //        latitudeDobule = 37.4978
 //        longitudeDouble = 127.0037

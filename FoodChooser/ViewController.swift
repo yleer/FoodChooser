@@ -38,13 +38,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // MARK: Segue.
     @IBAction func mapButton(_ sender: UIButton) {
-        for cell in collectionView.visibleCells{
-            if let indexPath = collectionView.indexPath(for: cell){
-                currentIndexPath = indexPath.row
-                performSegue(withIdentifier: "segue to map", sender: self)
-                break
-            }
-        }
+        performSegue(withIdentifier: "segue to map", sender: self)
     }
     
     @IBAction func recipeButton(_ sender: UIButton) {
@@ -52,12 +46,23 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        for cell in collectionView.visibleCells{
+            if let indexPath = collectionView.indexPath(for: cell){
+                currentIndexPath = indexPath.row
+                break
+            }
+        }
+        
         if segue.identifier == "segue to map"{
             let destinationVC = segue.destination as! MapViewController
             destinationVC.searchString = foodData.foods[currentIndexPath!].name
             if let coordinate = locationManager.location?.coordinate{
-                destinationVC.latitudeDobule = coordinate.latitude
-                destinationVC.longitudeDouble = coordinate.longitude
+                destinationVC.latitudeDobule = 37.5575
+//                    coordinate.latitude
+                destinationVC.longitudeDouble = 126.9245
+                    coordinate.longitude
+//                37.5575
+//                126.9245
             }
         }else{
             let destinationVC = segue.destination as! RecipeTableViewController
