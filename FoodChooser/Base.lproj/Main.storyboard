@@ -82,8 +82,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="V80-6v-WfC"/>
                     <connections>
-                        <outlet property="imageView" destination="v6s-JU-Lgf" id="5gj-gt-RUd"/>
-                        <outlet property="pp" destination="eZe-SP-SWm" id="RJd-8K-gci"/>
+                        <outlet property="baseView" destination="eZe-SP-SWm" id="RJd-8K-gci"/>
+                        <outlet property="foodImageView" destination="v6s-JU-Lgf" id="5gj-gt-RUd"/>
                         <segue destination="bNe-Xn-YJk" kind="show" identifier="segue to map" id="E4Q-Lp-nhr"/>
                         <segue destination="Q0W-rj-bY5" kind="show" identifier="segue to recipe" id="KJN-nP-gEn"/>
                     </connections>

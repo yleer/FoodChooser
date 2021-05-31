@@ -5,71 +5,90 @@
 //  Created by Yundong Lee on 2021/04/11.
 //
 
+
+
+// 고쳐야 할 것들.
+// 지도 문제 좀 있네.
+// 전체 디자인
+
+
+
 import UIKit
 import NMapsMap
- 
+
 class ViewController: UIViewController, CLLocationManagerDelegate{
     
+    @IBOutlet var baseView: UIView!
+    @IBOutlet var foodImageView: UIImageView!
     
-    @IBOutlet var pp: UIView!
-    let locationManager = CLLocationManager()
+    let locationManager = CLLocationManager()  // location service
     let foodData = FoodData()
-
     
-    @IBOutlet var imageView: UIImageView!
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
         let point = sender.translation(in: card)
         card.center = CGPoint(x: view.center.x + point.x, y: view.center.y + point.y)
-
+        
         if sender.state == UIPanGestureRecognizer.State.ended{
             if card.center.x < 75{
-                currentIndexPath += 1
-                UIView.animate(
-                    withDuration: 0.3,
-                    animations: {
-                        card.center = CGPoint(x: card.center.x - 200, y: card.center.y)
-                        card.alpha = 0
-                    },
-                    completion: { finished in
-                        self.imageView.image = self.foodData.foods[self.currentIndexPath].image
-                        card.frame = self.ppFrame!
-                        UIView.animate(withDuration: 0.3, animations: {
-                            card.alpha = 1
-                        })
-                    }
-                )
-                return
+                if currentIndexPath < foodData.foods.count - 1{
+                    currentIndexPath += 1
+                    UIView.animate(
+                        withDuration: 0.3,
+                        animations: {
+                            card.center = CGPoint(x: card.center.x - 200, y: card.center.y)
+                            card.alpha = 0
+                        },
+                        completion: { finished in
+                            self.foodImageView.image = self.foodData.foods[self.currentIndexPath].image
+                            card.frame = self.baseViewFrame!
+                            UIView.animate(withDuration: 0.3, animations: {
+                                card.alpha = 1
+                            })
+                        }
+                    )
+                    return
+                }
+                
             }else if card.center.x > (view.frame.width - 75){
-                currentIndexPath -= 1
-                UIView.animate(
-                    withDuration: 0.3,
-                    animations: {
-                    card.center = CGPoint(x: card.center.x + 200, y: card.center.y)
-                    card.alpha = 0
-                    },
-                    completion: { finished in
-                        card.frame = self.ppFrame!
-                        self.imageView.image = self.foodData.foods[self.currentIndexPath].image
-                        UIView.animate(withDuration: 0.3, animations: {
-                            card.alpha = 1
-                        })
-                    }
-                )
-                return
+                if currentIndexPath > 0{
+                    currentIndexPath -= 1
+                    
+                    UIView.animate(
+                        withDuration: 0.3,
+                        animations: {
+                            card.center = CGPoint(x: card.center.x + 200, y: card.center.y)
+                            card.alpha = 0
+                        },
+                        completion: { finished in
+                            card.frame = self.baseViewFrame!
+                            self.foodImageView.image = self.foodData.foods[self.currentIndexPath].image
+                            UIView.animate(withDuration: 0.3, animations: {
+                                card.alpha = 1
+                            })
+                        }
+                    )
+                    return
+                }
+                
+                
             }
             
             UIView.animate(withDuration: 0.2, animations: {
-                card.frame = self.ppFrame!
+                card.frame = self.baseViewFrame!
             })
         }
         
     }
     
-    var ppFrame : CGRect?
+    var baseViewFrame : CGRect?
+    var currentIndexPath = 0
+    
     override func viewDidLoad() {
-        imageView.image = foodData.foods[currentIndexPath].image
-        ppFrame = pp.frame
+        foodImageView.image = foodData.foods[currentIndexPath].image
+        baseViewFrame = baseView.frame
+        
+        // getting current location.
         locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
@@ -79,8 +98,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     
-    var currentIndexPath = 0
-        
+    
+    
     // MARK: Segue.
     @IBAction func mapButton(_ sender: UIButton) {
         performSegue(withIdentifier: "segue to map", sender: self)
@@ -91,21 +110,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if segue.identifier == "segue to map"{
+        // segue to map
+        if segue.identifier == "segue to map"{
             let destinationVC = segue.destination as! MapViewController
             destinationVC.searchString = foodData.foods[currentIndexPath].name
             if let coordinate = locationManager.location?.coordinate{
                 destinationVC.latitudeDobule = 37.5575
-//                    coordinate.latitude
+                //                    coordinate.latitude
                 destinationVC.longitudeDouble = 126.9245
-                    coordinate.longitude
-//                37.5575
-//                126.9245
+//                coordinate.longitude
+            //                37.5575
+            //                126.9245
             }
+        // segue to recipe
         }else{
             let destinationVC = segue.destination as! RecipeTableViewController
             destinationVC.searchString = foodData.foods[currentIndexPath].name
         }
     }
-
 }
