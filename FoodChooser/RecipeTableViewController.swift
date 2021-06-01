@@ -90,11 +90,25 @@ class RecipeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "recipe cell", for: indexPath)
-        cell.textLabel?.text = decodedData?.results[indexPath.row].title
+        let cell = tableView.dequeueReusableCell(withIdentifier: "recipe cell", for: indexPath) as! ReciepeTableViewCell
+        
+        let url = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
+        let data = try! Data(contentsOf: url!)
+        cell.foodThumNail.image = UIImage(data: data)
+        cell.foodTitle.text = decodedData?.results[indexPath.row].title
+        cell.foodDuration.text = "\(String(describing: decodedData?.results[indexPath.row].readyInMinutes))" + "분 걸림."
+        
+        
+        
+        
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+
 }
 
 
