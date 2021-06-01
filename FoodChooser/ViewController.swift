@@ -8,7 +8,7 @@
 
 
 // 고쳐야 할 것들.
-// 지도 문제 좀 있네.
+// 핸드폰으로 실행 했을때 실제로 현재 위치 가져올 수 있나 확인하기.
 // 전체 디자인
 
 
@@ -20,6 +20,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     
     @IBOutlet var baseView: UIView!
     @IBOutlet var foodImageView: UIImageView!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var buyFood: UIButton!
+    @IBOutlet var makeFood: UIButton!
+    
     
     let locationManager = CLLocationManager()  // location service
     let foodData = FoodData()
@@ -41,6 +45,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                         },
                         completion: { finished in
                             self.foodImageView.image = self.foodData.foods[self.currentIndexPath].image
+                            self.titleLabel.text = self.foodData.foods[self.currentIndexPath].koreanName + " " + "먹을까?"
+                            self.makeFood.setTitle(self.foodData.foods[self.currentIndexPath].koreanName + " " + "만들어 먹자.", for: .normal)
+                            self.buyFood.setTitle(self.foodData.foods[self.currentIndexPath].koreanName + " " + "근처 맛집 어디?", for: .normal)
                             card.frame = self.baseViewFrame!
                             UIView.animate(withDuration: 0.3, animations: {
                                 card.alpha = 1
@@ -63,6 +70,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                         completion: { finished in
                             card.frame = self.baseViewFrame!
                             self.foodImageView.image = self.foodData.foods[self.currentIndexPath].image
+                            self.titleLabel.text = self.foodData.foods[self.currentIndexPath].koreanName + " " + "먹을까?"
+                            self.makeFood.setTitle(self.foodData.foods[self.currentIndexPath].koreanName + " " + "만들어 먹자.", for: .normal)
+                            self.buyFood.setTitle(self.foodData.foods[self.currentIndexPath].koreanName + " " + "근처 맛집 어디?", for: .normal)
                             UIView.animate(withDuration: 0.3, animations: {
                                 card.alpha = 1
                             })
@@ -70,15 +80,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
                     )
                     return
                 }
-                
-                
             }
             
             UIView.animate(withDuration: 0.2, animations: {
                 card.frame = self.baseViewFrame!
             })
         }
-        
     }
     
     var baseViewFrame : CGRect?
@@ -86,7 +93,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     
     override func viewDidLoad() {
         foodImageView.image = foodData.foods[currentIndexPath].image
+        titleLabel.text = foodData.foods[currentIndexPath].koreanName + " " + "먹을까?"
+        makeFood.setTitle(foodData.foods[currentIndexPath].koreanName + " " + "만들어 먹자.", for: .normal)
+        buyFood.setTitle(foodData.foods[currentIndexPath].koreanName + " " + "근처 맛집 어디?", for: .normal)
         baseViewFrame = baseView.frame
+        foodImageView.layer.cornerRadius = 20
         
         // getting current location.
         locationManager.requestAlwaysAuthorization()
@@ -96,8 +107,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             locationManager.startUpdatingLocation()
         }
     }
-    
-    
     
     
     // MARK: Segue.
@@ -113,19 +122,21 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         // segue to map
         if segue.identifier == "segue to map"{
             let destinationVC = segue.destination as! MapViewController
-            destinationVC.searchString = foodData.foods[currentIndexPath].name
+            destinationVC.searchString = foodData.foods[currentIndexPath].englishName
             if let coordinate = locationManager.location?.coordinate{
+                print(coordinate) // 기본 일본으로 설정해서 일본으로 나옴. 핸드폰으로 한번 확인해보자.
+                // 우선 홍대 좌표로 설정함.
                 destinationVC.latitudeDobule = 37.5575
-                //                    coordinate.latitude
                 destinationVC.longitudeDouble = 126.9245
-//                coordinate.longitude
-            //                37.5575
-            //                126.9245
+                
+                //                destinationVC.latitudeDobule = coordinate.latitude
+                //                destinationVC.longitudeDouble = coordinate.longitude
+                
             }
-        // segue to recipe
+            // segue to recipe
         }else{
             let destinationVC = segue.destination as! RecipeTableViewController
-            destinationVC.searchString = foodData.foods[currentIndexPath].name
+            destinationVC.searchString = foodData.foods[currentIndexPath].englishName
         }
     }
 }

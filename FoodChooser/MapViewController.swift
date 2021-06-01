@@ -17,21 +17,11 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     let header = [
         "Authorization" : "KakaoAK 6a64b9ddab928a9caf16271ed0de0b9a",
     ]
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-       
-        print("not showing")
-        // 국립중앙도서관
-//        latitudeDobule = 37.4978
-//        longitudeDouble = 127.0037
-        //홍대입구
-         
-        latitudeDobule = 37.5575
-        longitudeDouble = 126.9245
-        
-        let query = "query=" + searchString! + "&y=" + String(latitudeDobule!) + "&x=" + String(longitudeDouble!) + "&radius=3000"
+    // url 처리 함수
+    func urlRequest(){
+        let query = "query=" + searchString! + "&y=" + String(latitudeDobule!) + "&x=" + String(longitudeDouble!) + "&radius=4000"
         let urlString = "https://dapi.kakao.com/v2/local/search/keyword.json?" + query
+        
         if let url = URL(string: urlString){
             
             let request = NSMutableURLRequest(
@@ -50,11 +40,11 @@ class MapViewController: UIViewController, MTMapViewDelegate {
                     let decoder = JSONDecoder()
                     do{
                         let decode = try decoder.decode(DaumMapSearchData.self, from: data!)
-                        // print(decode.documents.first)
                         DispatchQueue.main.async {
                             self.kakaoMap(decodedData: decode)
+                            print(decode)
                         }
-                    }catch{ 
+                    }catch{
                         print("not good \(error )")
                     }
                 }
@@ -63,22 +53,54 @@ class MapViewController: UIViewController, MTMapViewDelegate {
         }
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        urlRequest()
+    }
+    
+    // 지도에 표시하는 함수
     private func kakaoMap(decodedData : DaumMapSearchData){
         let mapView = MTMapView(frame: view.frame)
         mapView.delegate = self
         mapView.baseMapType = .standard
         
+        
+        var marks : [MTMapPOIItem] = []
         for place in decodedData.documents{
             let mark = MTMapPOIItem()
+            
             mark.itemName = place.place_name
+            
             mark.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: Double(place.y)!, longitude:Double(place.x)!))
-            mark.markerType = .bluePin
+            mark.markerType = .redPin
             mark.showAnimationType = .dropFromHeaven
-            mark.draggable = true
-            mapView.addPOIItems([mark])
+            mark.draggable = false
+
+            marks.append(mark)
+            
+            let info = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 90))
+            info.backgroundColor = .gray
+
+
+            let placeName = UITextView(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
+            placeName.text = place.place_name
+            let addressName = UITextView(frame: CGRect(x: 0, y: 30, width: 150, height: 30))
+            addressName.text = place.address_name
+            let phoneNumber = UITextView(frame: CGRect(x: 0, y: 60, width: 150, height: 30))
+            phoneNumber.text = place.phone
+
+            info.addSubview(placeName)
+            info.addSubview(addressName)
+            info.addSubview(phoneNumber)
+
+            mark.customCalloutBalloonView = info
+
+            mapView.addPOIItems(marks)
         }
         
         
+        
+        // 지도 view main view에 추가.
         view.addSubview(mapView)
         
         // 위치 현제 coord 찾아서 대입만 하자.
@@ -97,3 +119,9 @@ class MapViewController: UIViewController, MTMapViewDelegate {
 //y: "37.5920020842759"
 
 //        let a = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ??
+
+//[
+//    FoodChooser.PlaceInfo(place_name: "아구라멘비스트로 홍대직영점", address_name: "서울 마포구 서교동 332-1", phone: "02-336-9117", x: "126.926442312243", y: "37.55612730968"),
+//    FoodChooser.PlaceInfo(place_name: "멘야산다이메 홍대점", address_name: "서울 마포구 서교동 355-25", phone: "02-332-4129", x: "126.921418812785", y: "37.5536760629849"),
+//    FoodChooser.PlaceInfo(place_name: "멘야산다이메 연희점", address_name: "서울 서대문구 연희동 193-2", phone: "02-336-4129", x: "126.929447248228", y: "37.5655634793315")
+//]
