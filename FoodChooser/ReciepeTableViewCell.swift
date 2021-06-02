@@ -9,7 +9,9 @@ import UIKit
 
 class ReciepeTableViewCell: UITableViewCell {
 
+    @IBOutlet var baseView: UIView!
     @IBOutlet var foodThumNail: UIImageView!
     @IBOutlet var foodTitle: UILabel!
     @IBOutlet var foodDuration: UILabel!
+    
 }

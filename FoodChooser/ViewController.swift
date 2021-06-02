@@ -98,6 +98,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
         buyFood.setTitle(foodData.foods[currentIndexPath].koreanName + " " + "근처 맛집 어디?", for: .normal)
         baseViewFrame = baseView.frame
         foodImageView.layer.cornerRadius = 20
+        makeFood.layer.cornerRadius = 20
+        buyFood.layer.cornerRadius = 20
+        
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.78, green: 0.84, blue: 0.92, alpha: 1.00)
+
+        
         
         // getting current location.
         locationManager.requestAlwaysAuthorization()
@@ -106,6 +113,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             locationManager.startUpdatingLocation()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.78, green: 0.84, blue: 0.92, alpha: 1.00)
     }
     
     
