@@ -11,17 +11,27 @@ import WebKit
 class RecipeBrowserViewController: UIViewController, WKNavigationDelegate {
     
     var recipeUrl : String?
-    var webView: WKWebView!
+    var webView = WKWebView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        view = webView
+        view.addSubview(webView)
+         
+        recipeUrl!.insert("s", at: recipeUrl!.index(recipeUrl!.startIndex, offsetBy: 4))
         
         let url = URL(string: recipeUrl!)!
+        print(url)
         webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
+//        webView.allowsBackForwardNavigationGestures = true
+        
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        webView.frame = view.bounds
+        
+    }
+    
+
     
 }
