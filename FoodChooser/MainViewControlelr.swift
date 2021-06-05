@@ -10,7 +10,6 @@
 // 고쳐야 할 것들.
 // 핸드폰으로 실행 했을때 실제로 현재 위치 가져올 수 있나 확인하기.
 // 지도에서 마커 눌렀을때 나오는 view 디자인 조금 하기
-// 테이블 뷰에서 누르면 레서피 사이트가 나오게 하기.
 // 전체 코드 정리.
 
 
@@ -18,7 +17,7 @@
 import UIKit
 import NMapsMap
 
-class ViewController: UIViewController, CLLocationManagerDelegate{
+class MainViewControlelr: UIViewController, CLLocationManagerDelegate{
     
     @IBOutlet var baseView: UIView!
     @IBOutlet var foodImageView: UIImageView!
@@ -93,20 +92,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     var baseViewFrame : CGRect?
     var currentIndexPath = 0
     
-    override func viewDidLoad() {
+    func setUpViews(){
         foodImageView.image = foodData.foods[currentIndexPath].image
         titleLabel.text = foodData.foods[currentIndexPath].koreanName + " " + "먹을까?"
         makeFood.setTitle(foodData.foods[currentIndexPath].koreanName + " " + "만들어 먹자.", for: .normal)
         buyFood.setTitle(foodData.foods[currentIndexPath].koreanName + " " + "근처 맛집 어디?", for: .normal)
         baseViewFrame = baseView.frame
-        foodImageView.layer.cornerRadius = 20
-        makeFood.layer.cornerRadius = 20
-        buyFood.layer.cornerRadius = 20
-        
-        
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.78, green: 0.84, blue: 0.92, alpha: 1.00)
-
-        
+        foodImageView.layer.cornerRadius = Constants.cornerRadius
+        makeFood.layer.cornerRadius = Constants.cornerRadius
+        buyFood.layer.cornerRadius = Constants.cornerRadius
+        navigationController?.navigationBar.barTintColor = Constants.mainNavBarColor
+    }
+    
+    override func viewDidLoad() {
+        setUpViews()
         
         // getting current location.
         locationManager.requestAlwaysAuthorization()
@@ -119,7 +118,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate{
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.78, green: 0.84, blue: 0.92, alpha: 1.00)
+        navigationController?.navigationBar.barTintColor = Constants.mainNavBarColor
     }
     
     

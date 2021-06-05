@@ -15,7 +15,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     var longitudeDouble : Double?
     
     let header = [
-        "Authorization" : "KakaoAK 6a64b9ddab928a9caf16271ed0de0b9a",
+        "Authorization" : Constants.kakaoAuth,
     ]
     // url 처리 함수
     func urlRequest(){
@@ -55,6 +55,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = .white
         urlRequest()
     }
     
@@ -98,7 +99,13 @@ class MapViewController: UIViewController, MTMapViewDelegate {
             mapView.addPOIItems(marks)
         }
         
-        
+        let currentMark = MTMapPOIItem()
+        currentMark.itemName = "Current Location"
+        currentMark.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: latitudeDobule!, longitude: longitudeDouble!))
+        currentMark.markerType = .yellowPin
+        currentMark.draggable = false
+        currentMark.showAnimationType = .dropFromHeaven
+        mapView.add(currentMark)
         
         // 지도 view main view에 추가.
         view.addSubview(mapView)

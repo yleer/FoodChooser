@@ -16,22 +16,17 @@ class RecipeBrowserViewController: UIViewController, WKNavigationDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(webView)
-         
+        self.navigationController?.navigationBar.barTintColor = .white
         recipeUrl!.insert("s", at: recipeUrl!.index(recipeUrl!.startIndex, offsetBy: 4))
         
         let url = URL(string: recipeUrl!)!
         print(url)
         webView.load(URLRequest(url: url))
-//        webView.allowsBackForwardNavigationGestures = true
-        
     }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         webView.frame = view.bounds
-        
     }
-    
-
-    
 }

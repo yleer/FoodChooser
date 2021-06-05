@@ -10,23 +10,27 @@ import UIKit
 class RecipeTableViewController: UITableViewController {
     
     let headers = [
-        "x-rapidapi-key": "4be4004724msh04a4366f0fdf175p12039ajsn50ececf3194a",
-        "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
+        "x-rapidapi-key": Constants.rapidAPIKey ,
+        "x-rapidapi-host": Constants.rapidAPIHost
     ]
-    
-    let endPointString = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query="
+
+    let endPointString = Constants.receipEndPoint
+    let imageBaseUrl = Constants.imageBaseUrl
     var searchString : String?
-    let imageBaseUrl = "https://spoonacular.com/recipeImages/"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let urlString = endPointString + searchString!
         netwrok(urlStr: urlString)
-        
-        navigationController?.navigationBar.barTintColor = UIColor(red: 0.51, green: 0.72, blue: 0.82, alpha: 1.00)
-
-        view.backgroundColor = UIColor(red: 0.51, green: 0.72, blue: 0.82, alpha: 1.00)
+        view.backgroundColor = UIColor(red: Constants.recipeNavBarRed, green: Constants.recipeNavBarGreen, blue: Constants.recipeNavBarBlue, alpha: Constants.recipeNavBarAlpha)
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = UIColor(red: Constants.recipeNavBarRed, green: Constants.recipeNavBarGreen, blue: Constants.recipeNavBarBlue, alpha: Constants.recipeNavBarAlpha)
+    }
+    
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "go to broswer", sender: self)
     }
@@ -40,10 +44,7 @@ class RecipeTableViewController: UITableViewController {
                 destinationVC.recipeUrl = decodedData?.results[selectedRow].sourceUrl
             }
         }
-        
-        
     }
-    
     
     
     func netwrok(urlStr : String){
@@ -96,13 +97,12 @@ class RecipeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipe cell", for: indexPath) as! ReciepeTableViewCell
         
+        cell.backgroundColor = Constants.cellBackground
+        cell.baseView.backgroundColor = Constants.cellBaseView
+        cell.baseView.layer.cornerRadius = Constants.cellCornerRadius
+        cell.foodTitle.textColor = Constants.cellTextColor
         
-        cell.backgroundColor = UIColor(red: 0.51, green: 0.72, blue: 0.82, alpha: 1.00)
-        cell.baseView.backgroundColor = UIColor(red: 0.85, green: 0.95, blue: 0.86, alpha: 1.00)
-        cell.baseView.layer.cornerRadius = 15
-        cell.foodTitle.textColor = UIColor(red: 0.30, green: 0.32, blue: 0.60, alpha: 1.00)
-        
-        cell.foodDuration.textColor = UIColor(red: 0.30, green: 0.32, blue: 0.60, alpha: 1.00)
+        cell.foodDuration.textColor = Constants.cellTextColor
         
         
         let url = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
@@ -116,7 +116,7 @@ class RecipeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return Constants.cellSize
     }
     
 }
