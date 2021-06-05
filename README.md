@@ -10,10 +10,12 @@ why, installation, usage
 
 ### Why?
 I wanted an app that allows you to:
-+ Facilitate your choice between many menus.
-+ After choosing a type of food, find near by restaurants.
-+ Or find a recipe for that menu and make it by yourself.
++ Make choice between random food.
++ Find near by restaurants of selected menu.
++ Find a recipe for selected menu and make it by yourself.
 
 So that by using this app people will save time from browsing these information separately.
 
 ### Installation
+
+### Usage
