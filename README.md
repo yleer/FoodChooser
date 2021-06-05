@@ -13,3 +13,5 @@ I wanted an app that allows you to:
 + Facilitate your choice between many menus.
 + After choosing a type of food, find near by restaurants.
 + Or find a recipe for that menu and make it by yourself.
+
+So that by using this app people will save time from browsing these information separately.
