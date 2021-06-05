@@ -15,7 +15,7 @@
 
 
 import UIKit
-import NMapsMap
+import CoreLocation
 
 class MainViewControlelr: UIViewController, CLLocationManagerDelegate{
     
