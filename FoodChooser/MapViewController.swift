@@ -98,7 +98,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
 
             mapView.addPOIItems(marks)
         }
-        let a = 3
+        let a = 32
         let currentMark = MTMapPOIItem()
         currentMark.itemName = "Current Location"
         currentMark.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: latitudeDobule!, longitude: longitudeDouble!))
