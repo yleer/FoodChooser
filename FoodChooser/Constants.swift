@@ -16,8 +16,8 @@ struct Constants {
     // Recipe Table View controller
     
     
-    static let imageBaseUrl = "Your Api Key"
-    static let receipEndPoint = "Your Api Key"
+    static let imageBaseUrl = "Your api Key"
+    static let receipEndPoint = "Your api Key"
     
     static let recipeNavBarRed : CGFloat = 0.51
     static let recipeNavBarGreen : CGFloat = 0.72
