@@ -22,12 +22,12 @@ class RecipeTableViewController: UITableViewController {
         super.viewDidLoad()
         let urlString = endPointString + searchString!
         netwrok(urlStr: urlString)
-        view.backgroundColor = UIColor(red: Constants.recipeNavBarRed, green: Constants.recipeNavBarGreen, blue: Constants.recipeNavBarBlue, alpha: Constants.recipeNavBarAlpha)
+        view.backgroundColor = Constants.mainNavBarColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.barTintColor = UIColor(red: Constants.recipeNavBarRed, green: Constants.recipeNavBarGreen, blue: Constants.recipeNavBarBlue, alpha: Constants.recipeNavBarAlpha)
+        navigationController?.navigationBar.barTintColor = Constants.mainNavBarColor
     }
     
     
@@ -97,8 +97,8 @@ class RecipeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "recipe cell", for: indexPath) as! ReciepeTableViewCell
         
-        cell.backgroundColor = Constants.cellBackground
-        cell.baseView.backgroundColor = Constants.cellBaseView
+        cell.backgroundColor = Constants.mainNavBarColor
+//        cell.baseView.backgroundColor = Constants.cellBaseView
         cell.baseView.layer.cornerRadius = Constants.cellCornerRadius
         cell.foodTitle.textColor = Constants.cellTextColor
         

@@ -27,7 +27,7 @@ class MainViewControlelr: UIViewController, CLLocationManagerDelegate{
     
     
     let locationManager = CLLocationManager()  // location service
-    let foodData = FoodData()
+    var foodData = FoodData()
     
     @IBAction func panGesture(_ sender: UIPanGestureRecognizer) {
         let card = sender.view!
@@ -102,6 +102,7 @@ class MainViewControlelr: UIViewController, CLLocationManagerDelegate{
         makeFood.layer.cornerRadius = Constants.cornerRadius
         buyFood.layer.cornerRadius = Constants.cornerRadius
         navigationController?.navigationBar.barTintColor = Constants.mainNavBarColor
+        foodData.foods.shuffle()
     }
     
     override func viewDidLoad() {

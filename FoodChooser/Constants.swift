@@ -14,10 +14,10 @@ struct Constants {
     
     
     // Recipe Table View controller
-    static let rapidAPIKey = "4be4004724msh04a4366f0fdf175p12039ajsn50ececf3194a"
-    static let rapidAPIHost = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
-    static let imageBaseUrl = "https://spoonacular.com/recipeImages/"
-    static let receipEndPoint = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query="
+    
+    
+    static let imageBaseUrl = "Your Api Key"
+    static let receipEndPoint = "Your Api Key"
     
     static let recipeNavBarRed : CGFloat = 0.51
     static let recipeNavBarGreen : CGFloat = 0.72
@@ -32,6 +32,8 @@ struct Constants {
     static let cellSize : CGFloat = 100
     
     
-    // map
+    // API keys
+    static let rapidAPIKey = "4be4004724msh04a4366f0fdf175p12039ajsn50ececf3194a"
+    static let rapidAPIHost = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
     static let kakaoAuth = "KakaoAK 6a64b9ddab928a9caf16271ed0de0b9a"
 }

@@ -82,7 +82,6 @@ class MapViewController: UIViewController, MTMapViewDelegate {
             let info = UIView(frame: CGRect(x: 0, y: 0, width: 150, height: 90))
             info.backgroundColor = .gray
 
-
             let placeName = UITextView(frame: CGRect(x: 0, y: 0, width: 150, height: 30))
             placeName.text = place.place_name
             let addressName = UITextView(frame: CGRect(x: 0, y: 30, width: 150, height: 30))
@@ -98,7 +97,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
 
             mapView.addPOIItems(marks)
         }
-        let a = 32
+        
         let currentMark = MTMapPOIItem()
         currentMark.itemName = "Current Location"
         currentMark.mapPoint = MTMapPoint(geoCoord: MTMapPointGeo(latitude: latitudeDobule!, longitude: longitudeDouble!))
