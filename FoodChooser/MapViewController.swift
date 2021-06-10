@@ -19,7 +19,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     ]
     // url 처리 함수
     func urlRequest(){
-        let query = "query=" + searchString! + "&y=" + String(latitudeDobule!) + "&x=" + String(longitudeDouble!) + "&radius=4000"
+        let query = "query=" + searchString! + "&y=" + String(latitudeDobule!) + "&x=" + String(longitudeDouble!) + "&radius=10000"
         let urlString = "https://dapi.kakao.com/v2/local/search/keyword.json?" + query
         
         if let url = URL(string: urlString){
@@ -56,6 +56,8 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.barTintColor = .white
+        // prepare로 부터 온게 nil 일수가 있네.
+        
         urlRequest()
     }
     

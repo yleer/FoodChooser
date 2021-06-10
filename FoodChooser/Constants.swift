@@ -16,8 +16,8 @@ struct Constants {
     // Recipe Table View controller
     
     
-    static let imageBaseUrl = "Your api Key"
-    static let receipEndPoint = "Your api Key"
+    static let imageBaseUrl = "https://spoonacular.com/recipeImages/"
+    static let receipEndPoint = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search?query="
     
     static let recipeNavBarRed : CGFloat = 0.51
     static let recipeNavBarGreen : CGFloat = 0.72

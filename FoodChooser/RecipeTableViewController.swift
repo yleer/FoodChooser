@@ -105,9 +105,13 @@ class RecipeTableViewController: UITableViewController {
         cell.foodDuration.textColor = Constants.cellTextColor
         
         
-        let url = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
-        let data = try! Data(contentsOf: url!)
-        cell.foodThumNail.image = UIImage(data: data)
+//        let url = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
+//        let data = try! Data(contentsOf: url!)
+//        cell.foodThumNail.image = UIImage(data: data)
+        
+        
+        
+        cell.thumnailUrl = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
         cell.foodTitle.text = decodedData?.results[indexPath.row].title
         let a  = String(describing: decodedData!.results[indexPath.row].readyInMinutes)
         cell.foodDuration.text = a + "분 걸림."
@@ -118,6 +122,8 @@ class RecipeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return Constants.cellSize
     }
+    
+    
     
 }
 
