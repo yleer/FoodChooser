@@ -20,6 +20,7 @@ class RecipeTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = searchString! + " Recipes"
         let urlString = endPointString + searchString!
         netwrok(urlStr: urlString)
         view.backgroundColor = Constants.mainNavBarColor
@@ -42,6 +43,7 @@ class RecipeTableViewController: UITableViewController {
             if segue.identifier == "go to broswer"{
                 let destinationVC = segue.destination as! RecipeBrowserViewController
                 destinationVC.recipeUrl = decodedData?.results[selectedRow].sourceUrl
+                destinationVC.recipeName = decodedData?.results[selectedRow].title
             }
         }
     }

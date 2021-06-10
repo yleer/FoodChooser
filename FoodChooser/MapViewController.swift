@@ -13,6 +13,7 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     var searchString : String?
     var latitudeDobule : Double?
     var longitudeDouble : Double?
+    var menu : String?
     
     let header = [
         "Authorization" : Constants.kakaoAuth,
@@ -55,9 +56,15 @@ class MapViewController: UIViewController, MTMapViewDelegate {
         }
     }
     
+    private func setUpNavBar(){
+        navigationController?.navigationBar.barTintColor = .white
+        self.title = "가까운 " + menu! + " 위치"
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.barTintColor = .white
+        setUpNavBar()
+        
         // prepare로 부터 온게 nil 일수가 있네.
         
         urlRequest()

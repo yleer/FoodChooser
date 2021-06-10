@@ -94,6 +94,7 @@ class MainViewControlelr: UIViewController, CLLocationManagerDelegate{
     
     func setUpViews(){
 //        foodData.foods.shuffle()
+        self.title = "Food Chooser"
         foodImageView.image = foodData.foods[currentIndexPath].image
         titleLabel.text = foodData.foods[currentIndexPath].koreanName + " " + "먹을까?"
         makeFood.setTitle(foodData.foods[currentIndexPath].koreanName + " " + "만들어 먹자.", for: .normal)
@@ -141,11 +142,12 @@ class MainViewControlelr: UIViewController, CLLocationManagerDelegate{
                 print(coordinate)
                 // 기본 일본으로 설정해서 일본으로 나옴. 핸드폰으로 한번 확인해보자.
                 // 우선 홍대 좌표로 설정함.
-                destinationVC.latitudeDobule = 37.5575
-                destinationVC.longitudeDouble = 126.9245
+//                destinationVC.latitudeDobule = 37.5575
+//                destinationVC.longitudeDouble = 126.9245
                 
-//                destinationVC.latitudeDobule = coordinate.latitude
-//                destinationVC.longitudeDouble = coordinate.longitude
+                destinationVC.latitudeDobule = coordinate.latitude
+                destinationVC.longitudeDouble = coordinate.longitude
+                destinationVC.menu = foodData.foods[currentIndexPath].koreanName
                 
             }
             // segue to recipe
