@@ -136,15 +136,16 @@ class MainViewControlelr: UIViewController, CLLocationManagerDelegate{
         // segue to map
         if segue.identifier == "segue to map"{
             let destinationVC = segue.destination as! MapViewController
-            destinationVC.searchString = foodData.foods[currentIndexPath].englishName
+            destinationVC.searchString = foodData.foods[currentIndexPath].koreanName
             if let coordinate = locationManager.location?.coordinate{
-                print(coordinate) // 기본 일본으로 설정해서 일본으로 나옴. 핸드폰으로 한번 확인해보자.
+                print(coordinate)
+                // 기본 일본으로 설정해서 일본으로 나옴. 핸드폰으로 한번 확인해보자.
                 // 우선 홍대 좌표로 설정함.
-//                destinationVC.latitudeDobule = 37.5575
-//                destinationVC.longitudeDouble = 126.9245
+                destinationVC.latitudeDobule = 37.5575
+                destinationVC.longitudeDouble = 126.9245
                 
-                destinationVC.latitudeDobule = coordinate.latitude
-                destinationVC.longitudeDouble = coordinate.longitude
+//                destinationVC.latitudeDobule = coordinate.latitude
+//                destinationVC.longitudeDouble = coordinate.longitude
                 
             }
             // segue to recipe

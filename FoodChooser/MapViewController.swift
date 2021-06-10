@@ -21,9 +21,9 @@ class MapViewController: UIViewController, MTMapViewDelegate {
     func urlRequest(){
         let query = "query=" + searchString! + "&y=" + String(latitudeDobule!) + "&x=" + String(longitudeDouble!) + "&radius=10000"
         let urlString = "https://dapi.kakao.com/v2/local/search/keyword.json?" + query
+        let encodedString = urlString.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         
-        if let url = URL(string: urlString){
-            
+        if let url = URL(string: encodedString){
             let request = NSMutableURLRequest(
                 url: url,
                 cachePolicy: .useProtocolCachePolicy,
@@ -50,6 +50,8 @@ class MapViewController: UIViewController, MTMapViewDelegate {
                 }
             })
             dataTask.resume()
+        }else{
+            print("wrong url")
         }
     }
     
