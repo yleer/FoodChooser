@@ -92,11 +92,11 @@ class MainViewControlelr: UIViewController, CLLocationManagerDelegate{
     var baseViewFrame : CGRect?
     var currentIndexPath = 0
     
-    func setUpViews(){
-//        foodData.foods.shuffle()
+    private func setUpViews(){
         self.title = "Food Chooser"
-        foodImageView.image = foodData.foods[currentIndexPath].image
+        print(foodData.foods[currentIndexPath].koreanName)
         titleLabel.text = foodData.foods[currentIndexPath].koreanName + " " + "먹을까?"
+        foodImageView.image = foodData.foods[currentIndexPath].image
         makeFood.setTitle(foodData.foods[currentIndexPath].koreanName + " " + "만들어 먹자.", for: .normal)
         buyFood.setTitle(foodData.foods[currentIndexPath].koreanName + " " + "근처 맛집 어디?", for: .normal)
         baseViewFrame = baseView.frame

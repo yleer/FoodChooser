@@ -21,6 +21,7 @@ struct FoodData {
         foods.append(Food(englishName: "Chicken", image: UIImage(named: "치킨.jpg"),koreanName: "치킨"))
         foods.append(Food(englishName: "Gopchang", image: UIImage(named: "곱창.jpg"),koreanName: "곱창"))
         foods.append(Food(englishName: "Bunsik", image: UIImage(named: "분식.jpg"),koreanName: "분식"))
+        foods.shuffle()
     }
     
     struct Food{
