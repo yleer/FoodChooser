@@ -33,7 +33,7 @@ struct Constants {
     
     
     // API keys
-    static let rapidAPIKey = "4be4004724msh04a4366f0fdf175p12039ajsn50ececf3194a"
+    static let rapidAPIKey = "Your API key"
     static let rapidAPIHost = "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com"
-    static let kakaoAuth = "KakaoAK 6a64b9ddab928a9caf16271ed0de0b9a"
+    static let kakaoAuth = "Your API key"
 }
