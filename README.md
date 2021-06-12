@@ -7,9 +7,7 @@ FoodChoose lets you easily choose a food from variety of cuisines. You can also 
 
 |Choose a Food|Find a Recipe|Find a restraunt|
 |------|---|---|
-|<img src="https://user-images.githubusercontent.com/48948578/120888344-caeb1300-c632-11eb-89fb-e738829885e7.gif"  width="200" height="350" align="left">|<p align="center"><img src="https://user-images.githubusercontent.com/48948578/120999566-3ca69680-c7c4-11eb-909c-2b455e6dd93e.gif"  width="200" height="350"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/48948578/120999721-62cc3680-c7c4-11eb-96ea-8c913a477323.gif"  width="200" height="350"></p>|
-
-
+|<img src="https://user-images.githubusercontent.com/48948578/121766792-6cbcb380-cb8f-11eb-8724-3ca32085cc4e.gif"  width="200" height="350" align="left">|<p align="center"><img src="https://user-images.githubusercontent.com/48948578/121766796-734b2b00-cb8f-11eb-90cf-34f850b6a51c.gif"  width="200" height="350"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/48948578/121766800-7514ee80-cb8f-11eb-8f55-d11b138c745f.gif"  width="200" height="350"></p>|
 
 
 # Contents
