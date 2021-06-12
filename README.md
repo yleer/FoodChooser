@@ -124,10 +124,10 @@ The primary purpose of this project is to help people choose what to eat for a m
     
     cell.thumnailUrl = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
         
-    
-    let url = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
+    <pre><code>{    let url = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
         let data = try! Data(contentsOf: url!)
-        cell.foodThumNail.image = UIImage(data: data)
+        cell.foodThumNail.image = UIImage(data: data)}</code></pre>
+
         
         
 
