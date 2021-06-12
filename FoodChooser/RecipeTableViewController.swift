@@ -9,7 +9,7 @@ import UIKit
 
 class RecipeTableViewController: UITableViewController {
     
-    let headers = [
+    private let headers = [
         "x-rapidapi-key": Constants.rapidAPIKey ,
         "x-rapidapi-host": Constants.rapidAPIHost
     ]
