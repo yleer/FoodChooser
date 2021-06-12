@@ -93,6 +93,16 @@ The primary purpose of this project is to help people choose what to eat for a m
   > 
 ### Fixes
 + Recipe TableView loading problem.
+Original image fetching code.       
+  <pre>
+  <code>
+   let url = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
+        let data = try! Data(contentsOf: url!)
+        cell.foodThumNail.image = UIImage(data: data)
+   </code>
+   </pre>
+
+Fixed  image fetching code.
 <pre>
  <code>
   private func fetchImage() {
@@ -124,14 +134,7 @@ The primary purpose of this project is to help people choose what to eat for a m
  </code>
  </pre>
     
-        
-  <pre>
-  <code>
-   let url = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
-        let data = try! Data(contentsOf: url!)
-        cell.foodThumNail.image = UIImage(data: data)
-   </code>
-   </pre>
+ 
 + Recipe Browser problem.
  
  
