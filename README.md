@@ -96,4 +96,40 @@ The primary purpose of this project is to help people choose what to eat for a m
 + Recipe Browser problem.
  
  
+ 
+     private func fetchImage() {
+        if let url = thumnailUrl {
+            DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+                let urlContents = try? Data(contentsOf: url)
+                DispatchQueue.main.async {
+                    if let imageData = urlContents {
+                        if let imag = UIImage(data: imageData){
+                            self?.foodThumNail.image = imag
+                        }else{
+                            print("no image available")
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    var thumnailUrl : URL?{
+        didSet {
+            if thumnailUrl != nil && (oldValue != thumnailUrl) {
+                fetchImage()
+            }
+        }
+    }
+    
+    cell.thumnailUrl = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
+        
+    
+    let url = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
+        let data = try! Data(contentsOf: url!)
+        cell.foodThumNail.image = UIImage(data: data)
+        
+        
+
+ 
 
