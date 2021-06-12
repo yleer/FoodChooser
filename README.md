@@ -93,7 +93,7 @@ The primary purpose of this project is to help people choose what to eat for a m
   > 
 ### Fixes
 + Recipe TableView loading problem.
-Original image fetching code.       
+>Original image fetching code.       
   <pre>
   <code>
    let url = URL(string: imageBaseUrl + decodedData!.results[indexPath.row].image)
@@ -102,7 +102,7 @@ Original image fetching code.
    </code>
    </pre>
 
-Fixed  image fetching code.
+>Fixed  image fetching code.
 <pre>
  <code>
   private func fetchImage() {
