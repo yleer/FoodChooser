@@ -136,7 +136,7 @@ The primary purpose of this project is to help people choose what to eat for a m
     
  
 + Recipe Browser problem.
- 
+  When getting recipe url, url had both http and https format. Resulting 
  
  
 
