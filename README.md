@@ -10,6 +10,13 @@ FoodChoose lets you easily choose a food from variety of cuisines. You can also 
 |<img src="https://user-images.githubusercontent.com/48948578/121766800-7514ee80-cb8f-11eb-8f55-d11b138c745f.gif"  width="200" height="350" align="left">|<p align="center"><img src="https://user-images.githubusercontent.com/48948578/121766792-6cbcb380-cb8f-11eb-8724-3ca32085cc4e.gif"  width="200" height="350"></p>|<p align="center"><img src="https://user-images.githubusercontent.com/48948578/121766796-734b2b00-cb8f-11eb-90cf-34f850b6a51c.gif"  width="200" height="350"></p>|
 
 
+
+
+|||
+|------|---|
+|<img src=""  width="200" height="350" align="left">|<p align="center"><img src=""  width="200" height="350"></p>|
+
+
 # Contents
 + [Why?](#why)
 + [Installation](#Installation)
